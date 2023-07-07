@@ -1,0 +1,25 @@
+--Create clothing store database
+
+CREATE TABLE clothing_store (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, price INTEGER); 
+
+INSERT INTO clothing_store VALUES(1, "Bras", 34, 4, 45);
+INSERT INTO clothing_store VALUES(2, "Underwear", 67, 4, 11);
+INSERT INTO clothing_store VALUES(3, "Socks", 108, 3, 7);
+INSERT INTO clothing_store VALUES(4, "Jeans", 25, 6, 35);
+INSERT INTO clothing_store VALUES(5, "Leggings", 32, 7, 20);
+INSERT INTO clothing_store VALUES(6, "Sweatpants", 24, 7, 40);
+INSERT INTO clothing_store VALUES(7, "Tank_tops", 14, 8, 15);
+INSERT INTO clothing_store VALUES(8, "Hoodies", 12, 9, 50);
+INSERT INTO clothing_store VALUES(9, "Sweatshirts", 8, 9, 55);
+INSERT INTO clothing_store VALUES(10, "T-shirts", 55, 6, 22);
+INSERT INTO clothing_store VALUES(11, "Long_sleeve", 44, 7, 25);
+INSERT INTO clothing_store VALUES(12, "Bikini", 23, 11, 32);
+INSERT INTO clothing_store VALUES(13, "Shorts", 35, 6, 17);
+INSERT INTO clothing_store VALUES(14, "Thongs", 16, 4, 10);
+INSERT INTO clothing_store VALUES(15, "Sunglasses", 10, 13, 45);
+
+--display the database ordered by price. 
+SELECT * FROM clothing_store ORDER BY price;
+
+--how many items are in each aisle of the store?
+SELECT aisle, SUM(quantity) FROM clothing_store GROUP BY aisle
