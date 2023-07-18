@@ -1,3 +1,4 @@
+This project utilized data from KHAN ACADEMY stored at https://gist.github.com/pamelafox/585364b62390ea720858
 CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
     name TEXT,
     popularity INTEGER,
