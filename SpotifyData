@@ -1,0 +1,61 @@
+# For this project, I downloaded Spotify data from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata 
+(id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL)
+
+#Then I inserted the Spotify Data .csv into the table.
+
+Data was then explored using SQL. 
+SELECT * FROM BIT_DB.Spotifydata; 
+
+# I organized and manipulated the data in terms of energy. 
+SELECT * FROM BIT_DB.Spotifydata
+ORDER BY energy desc; 
+
+# I determined the average song duration per artist. 
+SELECT AVG(duration_ms), artist_name FROM BIT_DB.Spotifydata
+GROUP BY artist_name; 
+
+# I determined the artists who had mutliple songs listed within the data and ordered them from the most songs to least.
+SELECT artist_name, COUNT(track_name) FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+HAVING COUNT(track_name) > 1
+ORDER BY COUNT(track_name) desc; 
+
+# I determined which songs had song_key greater than 6 AND which their duration was longer than 200000. 
+SELECT track_name FROM BIT_DB.Spotifydata
+WHERE song_key > 8
+AND duration_ms > 200000; 
+
+# I determined the top ten most popular songs of 2021. 
+SELECT track_name, popularity, danceability FROM BIT_DB.Spotifydata
+ORDER BY popularity desc
+LIMIT 10;
+
+# I determined the average erngy and song duration of the data. 
+SELECT AVG(energy), AVG(duration_ms) FROM BIT_DB.Spotifydata;
+
+# I determined the avgerage popularity, danceability, and energy by artist and track.
+SELECT artist_name, track_name, avg(popularity), avg(danceability), avg(energy) 
+FROM BIT_DB.spotifydata
+GROUP BY artist_name, track_name; 
