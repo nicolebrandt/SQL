@@ -107,3 +107,10 @@ WHERE employees.Title = "Sales Support Agent" AND invoices.InvoiceDate LIKE '200
 GROUP BY employees.LastName
 ORDER BY Dollars desc LIMIT 1;
 
+15. What are the genres and composers for each track? Filter out incomplete data. 
+
+SELECT tracks.name AS track_name, tracks.Composer, genres.name AS genre FROM chinook.tracks
+LEFT JOIN chinook.genres
+ON genres.GenreId = tracks.GenreId
+WHERE tracks.Composer IS NOT NULL
+AND tracks.Composer <> 'NULL'; 
